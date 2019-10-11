@@ -4,7 +4,7 @@ exports.up = function(knex) {
     tbl.increments()
     tbl.string('name', 255)
       .notNullable()
-    tbl.sting('description', 255)
+    tbl.string('description', 255)
       .nullable()
     tbl.binary('completed', 1)
       .notNullable()
@@ -14,5 +14,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTableIfExists('porjects')
+  return knex.schema.dropTableIfExists('projects')
 };
