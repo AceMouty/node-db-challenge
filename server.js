@@ -5,6 +5,16 @@ const knexConfig = require('./knexfile')
 const db = knex(knexConfig.development)
 server.use(express.json())
 
+function changeStatus(arr){
+  const newStatus = arr.map(obj => {
+    return {
+      ...obj,
+      completed: !!Number(obj.completed)
+    }
+  })
+  return newStatus
+}
+
 // retrieve resources
 server.get('/api/resources', (req, res) => {
   db('resources')
@@ -16,14 +26,22 @@ server.get('/api/resources', (req, res) => {
 // retrieve projects
 server.get('/api/projects', (req, res) => {
   db('projects')
-  .then(projects => res.status(200).json({data: projects}))
+  .then(projects => res.status(200).json({data: changeStatus(projects)}))
 
 })
 
 // get all tasks
 server.get('/api/tasks', (req, res) => {
   db('tasks')
-  .then(tasks => res.status(200).json({data: tasks}))
+  .then(tasks => {
+    const changeStatus = tasks.map( task => {
+      return {
+        ...task,
+        completed: !!Number(task.completed)
+      }
+    })
+    res.status(200).json({data: changeStatus})
+  })
 })
 
 // post a new project
