@@ -40,11 +40,19 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 - [ ] Explain the difference between `Relational Databases` and `SQL`.
 
+  `Relational Databases` are a system in which is used to store data, `SQL` is the language used to interact with a databse system.
+
 - [ ] Why do tables need a `primary key`?
+
+  Tables need a `PK` so that we individually index a record along with having a massive performance boost in our querys when searching for data.
 
 - [ ] What is the name given to a table column that references the primary key on another table.
 
+  The name given to a table column that references the primary key on another table is called a `Foreign Key`
+
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
+
+  We need to `creatre a bridge table` so that both tbales have access to one anothers data if need be.
 
 ## Minimum Viable Product
 
